@@ -204,3 +204,4 @@ if (appData.budgetDay < 0) {
 } else {
 	alert('Поэтому бюджет в день, должен быть не более ' + appData.budgetDay);
 }
+
