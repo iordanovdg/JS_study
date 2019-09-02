@@ -52,7 +52,14 @@ let appData = {
 			while (isNaN(x) || x === '' || x === null)
 			appData.expensesMonth	+= +x
 		}
-	}
+	},
+	getBudget: function () {
+		appData.budgetMonth = appData.budget - appData.expensesMonth;
+		appData.budgetDay = Math.floor(appData.budget / 30);
+	},
+	getTargetMonth: function () {
+		appData.getTargetMonth = Math.ceil(appData.mission / appData.budget);
+	},
 
 }
 appData.asking();
@@ -83,9 +90,9 @@ appData.asking();
 
 
 
-appData.budgetMonth = appData.budget - appData.expensesMonth;
 
-appData.getTargetMonth = Math.ceil(appData.mission / appData.budget);
+
+
 
 
 
@@ -97,7 +104,7 @@ if (appData.budgetMonth < 0) {
 }
 
 
-appData.budgetDay = Math.floor(appData.budget / 30);
+
 
 if (appData.budgetDay < 0) {
 	alert('Что-то пошло не так');
