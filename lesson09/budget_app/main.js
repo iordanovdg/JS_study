@@ -25,8 +25,8 @@ let start = document.getElementById('start'),
 	incomeItems = document.querySelectorAll('.income-items'),
 	periodSelect = document.querySelector('.period-select'),
 
-	inputText = document.querySelectorAll('input[type="text"]'),
-	checkbox = document.querySelectorAll('input[type="checkbox"]'),
+
+	
 	periodAmount = document.querySelector('.period-amount');
 
 let expenses1,
@@ -59,11 +59,11 @@ let appData = {
 		this.getBudget();
 		this.showResult();
 
-		
+		let inputText = document.querySelectorAll('input[type="text"]');
 		inputText.forEach(function (item) {
 			item.setAttribute('disabled', 'true');
 		});
-	
+		let checkbox = document.querySelectorAll('input[type="checkbox"]');
 		checkbox.forEach(function (item) {
 			item.setAttribute('disabled', 'true');
 		});
@@ -188,7 +188,8 @@ let appData = {
 		this.budgetDay = Math.floor(appData.budget / 30);
 	},
 	reset: function() {
-		
+		inputText = document.querySelectorAll('input[type="text"]'),
+		checkbox = document.querySelectorAll('input[type="checkbox"]'),
 		cancel.style.display = 'none';
 		start.style.display = 'block';
 		
@@ -241,9 +242,7 @@ salaryAmount.addEventListener('input', function () {
 	}
 });
 
-start.addEventListener('click', appData.start.bind(appData));
 
-cancel.addEventListener('click', appData.reset.bind(appData));
 
 
 
@@ -258,3 +257,7 @@ periodSelect.addEventListener('input', function () {
 	periodAmount.textContent = periodSelect.value;
 	incomePeriodValue.value = appData.budgetMonth * periodSelect.value;
 });
+
+start.addEventListener('click', appData.start.bind(appData));
+
+cancel.addEventListener('click', appData.reset.bind(appData));
