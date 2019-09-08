@@ -188,8 +188,8 @@ let appData = {
 		this.budgetDay = Math.floor(appData.budget / 30);
 	},
 	reset: function() {
-		inputText = document.querySelectorAll('input[type="text"]'),
-		checkbox = document.querySelectorAll('input[type="checkbox"]'),
+		let inputText = document.querySelectorAll('input[type="text"]');
+		let checkbox = document.querySelectorAll('input[type="checkbox"]');
 		cancel.style.display = 'none';
 		start.style.display = 'block';
 		
