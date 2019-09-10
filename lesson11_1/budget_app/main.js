@@ -55,7 +55,7 @@ AppData.prototype.start = function () {
 	this.budget = +salaryAmount.value;
 
 
-	this.addExpIncBlock();
+
 	this.getExpenses();
 	this.getIncome();
 	this.getExpInc('addExpenses', true);
@@ -137,7 +137,7 @@ AppData.prototype.addExpIncBlock = function (elemClone, elemButton, elemSelector
 AppData.prototype.getExpInc = function (place, expenses) {
 	let textExpenses;
 
-	if (expenses) {
+	if (expenses ) {
 		textExpenses = additionalExpensesItem.value.split(', ');
 	} else {
 		textExpenses = additionalIncomeItem;
