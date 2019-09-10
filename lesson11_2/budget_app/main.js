@@ -89,7 +89,7 @@ class AppData {
 		targetMonthValue.value = Math.ceil(this.getTargetMonth());
 		incomePeriodValue.value = this.calcSavedMoney();
 	}
-
+// s
 	addExpIncBlock(elemClone, elemButton, elemSelector) {
 		let cloneItem = elemClone.cloneNode(true);
 
