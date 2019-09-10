@@ -29,6 +29,7 @@ const start = document.getElementById('start'),
 let additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
 	expensesItems = document.querySelectorAll('.expenses-items'),
 	incomeItems = document.querySelectorAll('.income-items');
+	
 
 
 
@@ -61,7 +62,7 @@ class AppData {
 		this.getInfoDeposit();
 		this.getBudget();
 		this.showResult();
-
+		
 		let inputText = document.querySelectorAll('input[type="text"]');
 		inputText.forEach((item) => {
 			item.setAttribute('disabled', 'true');
@@ -166,7 +167,9 @@ class AppData {
 	}
 
 	reset() {
-
+		let checkbox = document.querySelectorAll('input[type="checkbox"]'),
+				inputText = document.querySelectorAll('input[type="text"]');
+				
 		cancel.style.display = 'none';
 		start.style.display = 'block';
 
