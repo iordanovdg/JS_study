@@ -2,9 +2,9 @@
 
 let contentBox = document.querySelector('.contentBox');
 
-function realTime() {
+const realTime = () => {
 
-function countTime() {
+	const countTime = () => {
 	let date = new Date(),
 		newYear = new Date('01 januart 2020').getTime() - date.getTime(),
 		timeNow = date.toLocaleTimeString('en'),
@@ -15,7 +15,7 @@ function countTime() {
 		return {hours, dayToNewYear, week, timeNow};
 }
 
-function timeToBox() {
+const timeToBox = () => {
 	let count = countTime(),
 			weekText, hoursText;
 
@@ -34,21 +34,9 @@ function timeToBox() {
 		hoursText = 'Доброй ночи';
 	}
 
-	if (count.week === 0) {
-		weekText = 'Воскресенье';
-	} else if (count.week === 1) {
-		weekText = 'Понедельник';
-	} else if (count.week === 2) {
-		weekText = 'Вторник';
-	} else if (count.week === 3) {
-		weekText = 'Среда';
-	} else if (count.week === 4) {
-		weekText = 'Четверг';
-	} else if (count.week === 5) {
-		weekText = 'Пятница';
-	} else {
-		weekText = 'Суббота';
-	}
+	const weekends = ['Воскресенье', 'Понедельник', 'Вторник',  'Среда', 'Четверг', 'Пятница', 'Суббота']; 
+	weekText = weekends[count.week];
+
 	return { hoursText, weekText};
 }
 contentBox.style.cssText = 'width: 100%; height: 100vh; display: flex;justify-content: center; align-items: center; flex-direction: column;';

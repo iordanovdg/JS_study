@@ -1,13 +1,13 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
 	'use strict';
 
 	// Timer
-	function countTimer(deadline) {
+	const countTimer = (deadline) => {
 		let timerHours = document.querySelector('#timer-hours'),
 			timerMinutes = document.querySelector('#timer-minutes'),
 			timerSeconds = document.querySelector('#timer-seconds');
 
-		function getTimeRemaining() {
+		const getTimeRemaining = () => {
 			let dateStop = new Date(deadline).getTime(),
 				dateNow = new Date().getTime(),
 				timeRemaining = (dateStop - dateNow) / 1000,
@@ -18,40 +18,31 @@ window.addEventListener('DOMContentLoaded', function () {
 			return { day, hours, minutes, seconds, timeRemaining };
 		}
 
-		function updateClock() {
-			let timer = getTimeRemaining();
-			if(timer.hours < 10) {
-				timerHours.textContent = '0' + timer.hours;
+		const timeEdit = (elem) => {			
+			if(elem < 10) {
+				return '0' + elem;
 			} else {
-				timerHours.textContent = timer.hours;
+				return elem;
 			}
-
-			if(timer.minutes < 10) {
-				timerMinutes.textContent = '0' + timer.minutes;
-			} else {
-				timerMinutes.textContent = timer.minutes;
-			}
-
-			if(timer.seconds < 10) {
-				timerSeconds.textContent = '0' + timer.seconds;
-			} else {
-				timerSeconds.textContent = timer.seconds;
-			}
+		
+		}
+		const updateClock = () => {
+			let timeRemaining = getTimeRemaining();
+			timerHours.textContent = timeEdit(timeRemaining.hours);
+			timerMinutes.textContent = timeEdit(timeRemaining.minutes);
+			timerSeconds.textContent = timeEdit(timeRemaining.seconds);
 			
-			
-			
-			if(timer.timeRemaining > 0) {
-				setTimeout(updateClock, 1000);
-			}	else if(timer.timeRemaining <= 0){
+		 if(timer.timeRemaining <= 0){
 				timerHours.textContent = '00';
 				timerMinutes.textContent = '00';
 				timerSeconds.textContent = '00';
-				}		
+				clearInterval(updateClock);
+				}	
 		}
-
 		updateClock();
-	}
+		setInterval(updateClock, 1000);
+	};
 
-	// countTimer('12 september 2019');
-	setInterval(countTimer, 1000, '15 september 2019');
+	countTimer('15 september 2019');
+
 });
