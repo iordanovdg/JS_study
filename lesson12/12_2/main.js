@@ -30,10 +30,11 @@ const timeToBox = () => {
 	}
 	if (18 <= count.hours < 21) {
 		hoursText = 'Добрый вечер';
-	} else {
+	} 
+	if (21 <= count.hours ) {
 		hoursText = 'Доброй ночи';
 	}
-
+	console.log(count.hours);
 	const weekends = ['Воскресенье', 'Понедельник', 'Вторник',  'Среда', 'Четверг', 'Пятница', 'Суббота']; 
 	weekText = weekends[count.week];
 
@@ -47,9 +48,9 @@ contentBox.innerHTML =
 	<div> До нового года осталось: ${countTime().dayToNewYear} дней</div>`;
 }
 
-
-
 setInterval(realTime, 1000);
+
+
 
 
 

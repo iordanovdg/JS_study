@@ -15,34 +15,41 @@ window.addEventListener('DOMContentLoaded', () => {
 				minutes = Math.floor((timeRemaining / 60) % 60),
 				hours = Math.floor((timeRemaining / 60 / 60) % 24),
 				day = Math.floor(timeRemaining / 60 / 60 / 24);
-			return { day, hours, minutes, seconds, timeRemaining };
-		}
+			return {
+				day,
+				hours,
+				minutes,
+				seconds,
+				timeRemaining
+			};
+		};
 
-		const timeEdit = (elem) => {			
-			if(elem < 10) {
+		const timeEdit = (elem) => {
+			if (elem < 10) {
 				return '0' + elem;
 			} else {
 				return elem;
 			}
-		
-		}
+
+		};
 		const updateClock = () => {
 			let timeRemaining = getTimeRemaining();
 			timerHours.textContent = timeEdit(timeRemaining.hours);
 			timerMinutes.textContent = timeEdit(timeRemaining.minutes);
 			timerSeconds.textContent = timeEdit(timeRemaining.seconds);
-			
-		 if(timer.timeRemaining <= 0){
+
+			if (getTimeRemaining().timeRemaining <= 0) {
 				timerHours.textContent = '00';
 				timerMinutes.textContent = '00';
 				timerSeconds.textContent = '00';
 				clearInterval(updateClock);
-				}	
-		}
+			}
+		};
 		updateClock();
 		setInterval(updateClock, 1000);
 	};
 
 	countTimer('15 september 2019');
+
 
 });

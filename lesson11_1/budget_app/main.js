@@ -137,7 +137,7 @@ AppData.prototype.addExpIncBlock = function (elemClone, elemButton, elemSelector
 AppData.prototype.getExpInc = function (place, expenses) {
 	let textExpenses;
 
-	if (expenses ) {
+	if (expenses) {
 		textExpenses = additionalExpensesItem.value.split(', ');
 	} else {
 		textExpenses = additionalIncomeItem;
@@ -146,7 +146,6 @@ AppData.prototype.getExpInc = function (place, expenses) {
 		let itemValue = (expenses) ? item.trim() : item.value.trim();
 		if (itemValue !== '') {
 			this[place].push(itemValue);
-
 		}
 	});
 
