@@ -89,14 +89,18 @@ window.addEventListener('DOMContentLoaded', () => {
 		const popup = document.querySelector('.popup'),
 		popupBtn = document.querySelectorAll('.popup-btn'),
 		popUpClose = document.querySelector('.popup-close');
-		let width = document.documentElement.offsetWidth,
-				height = document.documentElement.offsetHeight,
-				count = 0,
+		let count = 0,
 				modal,
 				popupContent = document.querySelector('.popup-content');
 
-		
+		let getWidth = window.onresize = () => {
+			let width = document.documentElement.offsetWidth;
+			return width;
+				};
+
+				
 		let popupAnimate = () => {
+		let width =	getWidth();
 			modal = requestAnimationFrame(popupAnimate);
 			count++;
 			if( width < 767){
