@@ -196,9 +196,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	const slider = () => {
 		const slide = document.querySelectorAll('.portfolio-item'),
 			btn = document.querySelectorAll('.portfolio-btn'),
-			dot = document.querySelectorAll('.dot'),
+			dotWrap = document.querySelector('.portfolio-dots'),		
 			slider = document.querySelector('.portfolio-content');
 		console.log(slide);
+
+		// Добавляем дотсы по количеству слайдов
+		const addDots = () => {
+			for(let i = 0; i < slide.length; i++) {
+			let	newDot = document.createElement("li");
+			newDot.classList.add('dot');		
+			dotWrap.appendChild(newDot);
+			}			
+		};
+		addDots();
+
+		let dot = document.querySelectorAll('.dot');
+		dot[0].classList.add('dot-active');
+		
 
 		let currentSlide = 0,
 			interval;
@@ -267,13 +281,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 		slider.addEventListener('mouseover', (event) => {
-			if (event.target.matches('.portfolio-btn') || event.target.matches('.dot-active')) {
+			if (event.target.matches('.portfolio-btn') || event.target.matches('.dot')) {
 				stopSlide();
 			}
 		});
 
 		slider.addEventListener('mouseout', (event) => {
-			if (event.target.matches('.portfolio-btn') || event.target.matches('.dot-active')) {
+			if (event.target.matches('.portfolio-btn') || event.target.matches('.dot')) {
 				startSlide();
 			}
 		});
