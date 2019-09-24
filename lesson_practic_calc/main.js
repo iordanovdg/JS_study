@@ -295,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	slider();
 
+// Смена картинок
 
 	const img = () => {
 		let comand = document.querySelector('.command');
