@@ -435,12 +435,11 @@ document.addEventListener('DOMContentLoaded', () => {
 					body[key] = val;
 				});
 				target.reset();
-				postData(body, () => {
-					statusMessage.textContent = successMessage;
-				}, (error) => {
-					statusMessage.textContent = errorMessage;
-					console.error(error);
-				});
+				postData(body)
+				.then((result)=>{
+					return result;
+					})
+				.catch(error => console.error(error));
 
 			} else {
 
@@ -455,12 +454,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 				target.reset();
 
-				postData(body, () => {
-					statusMessage.textContent = successMessage;
-				}, (error) => {
-					statusMessage.textContent = errorMessage;
-					console.error(error);
-				});
+				postData(body)
+
+				.then((result)=>{
+					return result;
+					})
+				.catch(error => console.error(error));
 			}
 
 			const popUpClose = () => {
@@ -471,26 +470,31 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 
-		const postData = (body, outputData, errorData) => {
-			const request = new XMLHttpRequest();
-			request.addEventListener('readystatechange', () => {
-
-				if (request.readyState !== 4) {
-					return;
-				}
-
-				if (request.status === 200) {
-					outputData();
-				} else {
-					errorData(request.status);
-				}
+		const postData = (body) => {
+			return new Promise((resolve, reject) => {
+				const request = new XMLHttpRequest();
+				request.addEventListener('readystatechange', () => {
+	
+					if (request.readyState !== 4) {
+						return;
+					}
+	
+					if (request.status === 200) {
+						let result = statusMessage.textContent = successMessage;
+						resolve(result);
+					} else {
+						let error = statusMessage.textContent = errorMessage;
+						reject(error);
+					}
+				});
+	
+				request.open('POST', './server.php');
+				request.setRequestHeader('Content-Type', 'aplication/json');
+	
+	
+				request.send(JSON.stringify(body));
 			});
-
-			request.open('POST', './server.php');
-			request.setRequestHeader('Content-Type', 'aplication/json');
-
-
-			request.send(JSON.stringify(body));
+		
 		};
 
 
