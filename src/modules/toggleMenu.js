@@ -5,14 +5,7 @@ const toggleMenu = () => {
 		menuItems = menu.querySelectorAll('ul > li');
 
 	const handlerMenu = () => {
-		// Var 1
-		// if (!menu.style.transform || menu.style.transform === `translate(-100%)` ) {
-		// 	menu.style.transform = `translate(0)` ;
-		// } else {
-		// 	menu.style.transform = `translate(-100%)`;
-		// }
-
-		// Var 2
+	
 		menu.classList.toggle('active-menu');
 	};
 

@@ -55,7 +55,7 @@ const sendForm = () => {
 			})
 			.catch((error) => {
 				statusMessage.textContent = errorMessage;
-				console.error(error)
+				console.error(error);
 			});
 
 
