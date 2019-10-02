@@ -1,6 +1,7 @@
 const togglePopUp = () => {
 	const popup = document.querySelector('.popup'),
-		popupBtn = document.querySelectorAll('.popup-btn');
+		popupBtn = document.querySelectorAll('.popup-btn'),
+		serviceBlock = document.querySelector('.service');
 
 	let count = 0,
 		modal,
@@ -26,12 +27,15 @@ const togglePopUp = () => {
 		}
 	};
 
-	popupBtn.forEach((elem) => {
-		elem.addEventListener('click', () => {
+	serviceBlock.addEventListener('click', (event) => {
+		let target = event.target;
+		
+		if(target.matches('.popup-btn')) {
 			popup.style.display = 'block';
 			popupAnimate();
-		});
+		}
 	});
+
 
 
 
