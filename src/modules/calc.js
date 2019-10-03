@@ -42,7 +42,8 @@ const calc = (price = 100) => {
 
 			calcBlockInput.forEach((elem) => {
 				
-				elem.value = elem.value.replace(/\D/g, '');
+				elem.value = elem.value.replace(/[^0-9]|^0{1}/g, '');
+				
 				
 			});
 			countSum();
